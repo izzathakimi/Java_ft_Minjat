@@ -1,4 +1,5 @@
 package com.example.grant_system.entities;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +15,10 @@ public class Academician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    @OneToMany(mappedBy = "projectLeader")
+    private List<ResearchGrant> grantsLed;
 
     @Column(nullable = false)
     private String name;

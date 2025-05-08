@@ -15,8 +15,34 @@
                 <strong>Faculty:</strong> <span th:text="${academician.faculty}"></span><br>
                 <strong>Email:</strong> <span th:text="${academician.email}"></span>
             </p>
+
+
+            <h3>Projects Led</h3>
+            <table class="table table-striped mb-5">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="project : ${projectsLed}">
+                        <td th:text="${project.title}"></td>
+                        <td>
+                            <a th:href="@{'/grants/' + ${project.id}}" class="btn btn-link">
+                                <!-- SVG icon here -->
+                            </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(projectsLed)}">
+                        <td colspan="3">No projects led found.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+
             <a href="/academicians" class="btn btn-secondary">Back to List</a>
         </div>
     </div>
+
 </body>
 </html>

@@ -14,6 +14,9 @@ import com.example.grant_system.repositories.UserRepository; // Add this import
 import com.example.grant_system.entities.User;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.SimpleMailMessage; // Add this import
+import java.util.List; // Import List
+import com.example.grant_system.entities.ResearchGrant; // Import Grant entity
+import com.example.grant_system.repositories.ResearchGrantRepository; // Import GrantRepository
 
 @Controller
 @RequestMapping("/academicians")
@@ -31,6 +34,9 @@ public class AcademicianController {
 
     @Autowired
     private JavaMailSender mailSender;  
+
+    @Autowired
+    private ResearchGrantRepository researchGrantRepo; // Inject the repository
 
     private void sendWelcomeEmail(String to, String rawPassword) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -103,9 +109,28 @@ public class AcademicianController {
 
     @GetMapping("/view/{id}")
     public String view(@PathVariable Long id, Model model) {
-        model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
+        Academician academician = academicianRepo.findById(id).orElseThrow();
+    
+
+            // ✅ Test: Fetch ALL grants (temporarily)
+        List<ResearchGrant> allGrants = researchGrantRepo.findAll();
+        System.out.println("✅ Total grants in DB: " + allGrants.size());
+        for (ResearchGrant g : allGrants) {
+            System.out.println("Grant in DB -> ID: " + g.getId() + ", Title: " + g.getTitle() + ", Leader ID: " + g.getProjectLeader().getId());
+        }
+
+        List<ResearchGrant> projectsLed = researchGrantRepo.findByProjectLeaderId(id);
+    
+        // 🔍 Step 2: Debugging logs
+        System.out.println("Viewing academician ID: " + id);
+        System.out.println("Grants found: " + projectsLed.size());
+
+        model.addAttribute("academician", academician);
+        model.addAttribute("projectsLed", projectsLed);
+    
         return "academicians/view";
     }
+    
 
     public String generateRandomPassword() {
         return UUID.randomUUID().toString().substring(0, 8); // 8-char password
