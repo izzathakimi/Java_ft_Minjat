@@ -1,4 +1,4 @@
-package com.example.grantsystem.entities;
+package com.example.grant_system.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

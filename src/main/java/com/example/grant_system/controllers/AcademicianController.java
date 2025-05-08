@@ -1,7 +1,7 @@
-package com.example.grantsystem.controllers;
+package com.example.grant_system.controllers;
 
-import com.example.grantsystem.entities.Academician;
-import com.example.grantsystem.repositories.AcademicianRepository;
+import com.example.grant_system.entities.Academician;
+import com.example.grant_system.repositories.AcademicianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
