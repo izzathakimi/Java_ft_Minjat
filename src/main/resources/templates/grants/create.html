@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Research Grant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h1 class="mb-4">Add New Grant</h1>
+    
+<form th:action="@{'/grants'}" th:object="${grant}" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control" th:field="*{title}" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Amount</label>
+        <input type="number" step="0.01" class="form-control" th:field="*{grantAmount}" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Provider</label>
+        <input type="text" class="form-control" th:field="*{grantProvider}" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Start Date</label>
+        <input type="date" class="form-control" th:field="*{startDate}" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Duration (Months)</label>
+        <input type="number" class="form-control" th:field="*{durationMonth}" required>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="/grants" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>
