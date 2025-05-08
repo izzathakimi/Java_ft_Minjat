@@ -6,10 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.util.UUID;
+import com.example.grant_system.repositories.UserRepository; // Add this import
 
 @Controller
 @RequestMapping("/academicians")
 public class AcademicianController {
+
+
+    @Autowired
+    private UserRepository UserRepository; // Add this line
 
     @Autowired
     private AcademicianRepository academicianRepo;
@@ -28,7 +35,27 @@ public class AcademicianController {
 
     @PostMapping
     public String save(@ModelAttribute Academician academician) {
+        // Step 1: Save the academician
         academicianRepo.save(academician);
+
+        // Step 2: Generate random password
+        String rawPassword = UUID.randomUUID().toString().substring(0, 8);
+
+        // Step 3: Hash the password
+        String hashedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+
+        // Step 4: Create and save the user
+        User user = new User();
+        user.setEmail(academician.getEmail());
+        user.setName(academician.getName());
+        user.setPassword(hashedPassword);
+        user.setUserLevel("ACADEMICIAN");
+
+        UserRepository.save(user);
+
+        // Step 5: Send the plain password via email
+        sendWelcomeEmail(academician.getEmail(), rawPassword);
+
         return "redirect:/academicians";
     }
 
@@ -57,4 +84,9 @@ public class AcademicianController {
         model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
         return "academicians/view";
     }
+
+    public String generateRandomPassword() {
+        return UUID.randomUUID().toString().substring(0, 8); // 8-char password
+    }
+    
 }
