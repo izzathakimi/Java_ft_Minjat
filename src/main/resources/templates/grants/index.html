@@ -12,7 +12,10 @@
     <div class="container mt-4">
         <h1 class="d-flex justify-content-between align-items-center">
             Research Grants
+            <!-- Show "Add New" only if not an academician -->
+            <div th:if="${#authentication.principal.userLevel != 'ACADEMICIAN'}">
             <a href="/grants/create" class="btn btn-primary">Add New Grant</a>
+            </div>
         </h1>
         <table class="table table-striped">
             <thead>
@@ -37,8 +40,11 @@
                     <td>
                         <div class="d-flex flex-wrap gap-2">
                             <a th:href="@{/grants/view/{id}(id=${grant.id})}" class="btn btn-sm btn-info">View</a>
+                            <!-- Show "Add New" only if not an academician -->
+                            <div th:if="${#authentication.principal.userLevel != 'ACADEMICIAN'}">
                             <a th:href="@{'/grants/edit/' + ${grant.id}}" class="btn btn-sm btn-warning">Edit</a>
                             <a th:href="@{'/grants/delete/' + ${grant.id}}" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
                         </div>
                     </td>
                 </tr>
