@@ -50,4 +50,10 @@ public class AcademicianController {
         academicianRepo.deleteById(id);
         return "redirect:/academicians";
     }
+
+    @GetMapping("/view/{id}")
+    public String view(@PathVariable Long id, Model model) {
+        model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
+        return "academicians/view";
+    }
 }

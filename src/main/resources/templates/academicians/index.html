@@ -8,13 +8,25 @@
     <h1>Academicians</h1>
     <a href="/academicians/create" class="btn btn-primary mb-3">Add New</a>
     <table class="table table-bordered">
-        <thead><tr><th>Name</th><th>Faculty</th><th>Email</th><th>Actions</th></tr></thead>
+        <thead>
+            <tr>
+                <th>Staff ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Faculty</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         <tbody>
             <tr th:each="a : ${academicians}">
+                <td th:text="${a.id}"></td>
                 <td th:text="${a.name}"></td>
+                <td th:text="${a.position}"></td>
                 <td th:text="${a.faculty}"></td>
                 <td th:text="${a.email}"></td>
                 <td>
+                    <a th:href="@{/academicians/view/{id}(id=${a.id})}" class="btn btn-sm btn-info">View</a>
                     <a th:href="@{/academicians/edit/{id}(id=${a.id})}" class="btn btn-sm btn-warning">Edit</a>
                     <a th:href="@{/academicians/delete/{id}(id=${a.id})}" class="btn btn-sm btn-danger">Delete</a>
                 </td>

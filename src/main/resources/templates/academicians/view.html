@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Academician</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body class="p-4">
+    <h2>Academician Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${academician.name}"></h5>
+            <p class="card-text">
+                <strong>Staff ID:</strong> <span th:text="${academician.id}"></span><br>
+                <strong>Position:</strong> <span th:text="${academician.position}"></span><br>
+                <strong>Faculty:</strong> <span th:text="${academician.faculty}"></span><br>
+                <strong>Email:</strong> <span th:text="${academician.email}"></span>
+            </p>
+            <a href="/academicians" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</body>
+</html>
