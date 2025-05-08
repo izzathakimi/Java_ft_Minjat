@@ -21,6 +21,13 @@
                         </li>
                         <!-- Add more navigation items as needed -->
                     </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            </form>
+                        </li>
+                    </ul>                    
                 </div>
             </div>
         </nav>

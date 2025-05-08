@@ -52,7 +52,10 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/dashboard", true)
                 .permitAll()
             )
-            .logout(logout -> logout.permitAll())
+            .logout(logout -> logout
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+            )
             .authenticationProvider(authenticationProvider())
             .build();
     }

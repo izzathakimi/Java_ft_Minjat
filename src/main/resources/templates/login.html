@@ -24,6 +24,11 @@
                         <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </form>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-success">
+                        You have been logged out successfully.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
