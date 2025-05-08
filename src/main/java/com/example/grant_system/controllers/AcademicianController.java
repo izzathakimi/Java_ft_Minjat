@@ -125,9 +125,13 @@ public class AcademicianController {
         System.out.println("Viewing academician ID: " + id);
         System.out.println("Grants found: " + projectsLed.size());
 
+
+        List<ResearchGrant> projectsInvolved = researchGrantRepo.findByProjectMemberId(id);
+
         model.addAttribute("academician", academician);
         model.addAttribute("projectsLed", projectsLed);
-    
+        model.addAttribute("projectsInvolved", projectsInvolved);
+
         return "academicians/view";
     }
     

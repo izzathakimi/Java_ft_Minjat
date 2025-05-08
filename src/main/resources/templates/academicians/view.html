@@ -39,6 +39,29 @@
                 </tbody>
             </table>
             
+            <h3>Projects Involved</h3>
+            <table class="table table-striped mb-5">
+                <thead>
+                    <tr>
+                        <th>Project Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="project : ${projectsInvolved}">
+                        <td th:text="${project.title}"></td>
+                        <td>
+                            <a th:href="@{'/grants/' + ${project.id}}" class="btn btn-link">
+                                <!-- icon -->
+                            </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(projectsInvolved)}">
+                        <td colspan="3">No projects involved found.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    
 
             <a href="/academicians" class="btn btn-secondary">Back to List</a>
         </div>

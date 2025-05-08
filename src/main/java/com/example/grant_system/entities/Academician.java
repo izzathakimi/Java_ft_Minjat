@@ -16,7 +16,9 @@ public class Academician {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @ManyToMany(mappedBy = "projectMembers")
+    private List<ResearchGrant> researchGrants;
+    
     @OneToMany(mappedBy = "projectLeader")
     private List<ResearchGrant> grantsLed;
 
