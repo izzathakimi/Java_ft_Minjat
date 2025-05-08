@@ -33,8 +33,9 @@ public class AcademicianController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model) {
-        model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Academician academician = academicianRepo.findById(id).orElseThrow();
+        model.addAttribute("academician", academician);
         return "academicians/edit";
     }
 
@@ -55,5 +56,12 @@ public class AcademicianController {
     public String view(@PathVariable Long id, Model model) {
         model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
         return "academicians/view";
+    }
+
+    @PostMapping("/academicians/edit/{id}")
+    public String updateAcademician(@PathVariable Long id, @ModelAttribute Academician academician) {
+        // Update logic here, e.g.:
+        academicianService.update(id, academician);
+        return "redirect:/academicians";
     }
 }

@@ -6,7 +6,7 @@
 </head>
 <body class="p-4">
     <h2>Edit Academician</h2>
-    <form th:action="@{/academicians/update/{id}(id=${academician.id})}" method="post">
+    <form th:action="@{/academicians/edit/{id}(id=${academician.id})}" th:object="${academician}" method="post">
         <div class="form-group">
             <label>Name:</label>
             <input type="text" th:field="*{name}" class="form-control" required />
