@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.UUID;
 import com.example.grant_system.repositories.UserRepository; // Add this import
 import com.example.grant_system.entities.User;
@@ -20,6 +22,9 @@ public class AcademicianController {
 
     @Autowired
     private UserRepository UserRepository; // Add this line
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AcademicianRepository academicianRepo;
@@ -59,7 +64,7 @@ public class AcademicianController {
         String rawPassword = UUID.randomUUID().toString().substring(0, 8);
 
         // Step 3: Hash the password
-        String hashedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+        String hashedPassword = passwordEncoder.encode(rawPassword); // use injected bean
 
         // Step 4: Create and save the user
         User user = new User();
