@@ -57,11 +57,4 @@ public class AcademicianController {
         model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
         return "academicians/view";
     }
-
-    @PostMapping("/academicians/edit/{id}")
-    public String updateAcademician(@PathVariable Long id, @ModelAttribute Academician academician) {
-        // Update logic here, e.g.:
-        academicianService.update(id, academician);
-        return "redirect:/academicians";
-    }
 }
