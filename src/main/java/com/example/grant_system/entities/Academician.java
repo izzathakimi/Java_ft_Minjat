@@ -21,6 +21,9 @@ public class Academician {
     @Column(nullable = false)
     private String faculty;
 
+    @Column(nullable = false)
+    private String position;
+
     @Column(nullable = false, unique = true)
     private String email;
 }
