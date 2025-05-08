@@ -33,8 +33,9 @@ public class AcademicianController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model) {
-        model.addAttribute("academician", academicianRepo.findById(id).orElseThrow());
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Academician academician = academicianRepo.findById(id).orElseThrow();
+        model.addAttribute("academician", academician);
         return "academicians/edit";
     }
 
