@@ -2,6 +2,7 @@ package com.example.grant_system.controllers;
 
 import com.example.grant_system.entities.ResearchGrant;
 import com.example.grant_system.repositories.ResearchGrantRepository;
+import com.example.grant_system.repositories.AcademicianRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,9 @@ public class ResearchGrantController {
 
     @Autowired
     private ResearchGrantRepository grantRepo;
+    
+    @Autowired
+    private AcademicianRepository academicianRepo;
 
     @GetMapping
     public String listGrants(Model model) {
@@ -26,6 +30,7 @@ public class ResearchGrantController {
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         model.addAttribute("grant", new ResearchGrant());
+        model.addAttribute("academicians", academicianRepo.findAll());
         return "grants/create";
     }
 
@@ -37,8 +42,11 @@ public class ResearchGrantController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        ResearchGrant grant = grantRepo.findById(id).orElseThrow();
+        ResearchGrant grant = grantRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid grant ID: " + id));
+        System.out.println("Editing grant with ID: " + grant.getId());
+        
         model.addAttribute("grant", grant);
+        model.addAttribute("academicians", academicianRepo.findAll());
         return "grants/edit";
     }
 

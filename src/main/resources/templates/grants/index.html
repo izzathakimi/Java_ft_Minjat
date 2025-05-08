@@ -15,7 +15,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Project Leader</th>
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Provider</th>
@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 <tr th:each="grant : ${grants}">
-                    <td th:text="${grant.id}"></td>
+                    <td th:text="${grant.projectLeader.name}"></td>
                     <td th:text="${grant.title}">Title</td>
                     <td th:text="${grant.grantAmount}">0.00</td>
                     <td th:text="${grant.grantProvider}">Provider</td>
