@@ -31,6 +31,7 @@ public class ResearchGrantController {
     public String showCreateForm(Model model) {
         model.addAttribute("grant", new ResearchGrant());
         model.addAttribute("academicians", academicianRepo.findAll());
+        
         return "grants/create";
     }
 
@@ -42,9 +43,7 @@ public class ResearchGrantController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        ResearchGrant grant = grantRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid grant ID: " + id));
-        System.out.println("Editing grant with ID: " + grant.getId());
-        
+        ResearchGrant grant = grantRepo.findById(id).orElseThrow();
         model.addAttribute("grant", grant);
         model.addAttribute("academicians", academicianRepo.findAll());
         return "grants/edit";

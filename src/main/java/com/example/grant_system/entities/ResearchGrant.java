@@ -3,6 +3,7 @@ package com.example.grant_system.entities;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,14 @@ public class ResearchGrant {
     private List<Milestone> milestones;
 
     // Relationships like members can be added later
+    @ManyToMany
+    @JoinTable(
+        name = "grant_members",
+        joinColumns = @JoinColumn(name = "grant_id"),
+        inverseJoinColumns = @JoinColumn(name = "academician_id")
+    )
+    private List<Academician> projectMembers = new ArrayList<>();
+
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -55,4 +64,8 @@ public class ResearchGrant {
 
     public List<Milestone> getMilestones() { return milestones; }
     public void setMilestones(List<Milestone> milestones) { this.milestones = milestones; }
+
+    public List<Academician> getProjectMembers() {return projectMembers;}
+    public void setProjectMembers(List<Academician> projectMembers) {this.projectMembers = projectMembers;}
+    
 }

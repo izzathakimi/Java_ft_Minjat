@@ -36,7 +36,16 @@
                     th:value="${a.id}"
                     th:text="${a.name}">Select...</option>
         </select>
-    </div>    
+    </div> 
+    <div class="col-md-6">
+        <label>Project Members:</label>
+        <select th:field="*{projectMembers}" multiple="multiple" class="form-control">
+            <option th:each="a : ${academicians}" 
+                    th:value="${a.id}" 
+                    th:text="${a.name}"></option>
+        </select>
+    </div> 
+       
     <div class="col-12">
         <button type="submit" class="btn btn-success">Save</button>
         <a href="/grants" class="btn btn-secondary">Cancel</a>

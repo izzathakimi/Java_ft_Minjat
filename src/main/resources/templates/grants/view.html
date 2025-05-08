@@ -21,6 +21,29 @@
         </div>
         <div class="card mt-4">
             <div class="card-body">
+                <h4 class="card-title">Project Members</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="member : ${grant.projectMembers}">
+                                <td th:text="${member.name}"></td>
+                                <td th:text="${member.position}"></td>
+                                <td th:text="${member.faculty}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+        <div class="card mt-4">
+            <div class="card-body">
                 <h4 class="card-title">Project Milestones</h4>
                 <a th:href="@{'/milestones/create?grantId=' + ${grant.id}}" class="btn btn-primary mb-3">Add Milestone</a>
                 <div class="table-responsive">
