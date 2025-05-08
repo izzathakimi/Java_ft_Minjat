@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <tr th:each="grant : ${grants}">
-                    <td th:text="${grant.projectLeader.name}"></td>
+                    <td th:text="${grant.projectLeader != null ? grant.projectLeader.name : 'N/A'}">N/A</td>
                     <td th:text="${grant.title}">Title</td>
                     <td th:text="${grant.grantAmount}">0.00</td>
                     <td th:text="${grant.grantProvider}">Provider</td>

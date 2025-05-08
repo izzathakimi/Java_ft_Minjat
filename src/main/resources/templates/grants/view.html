@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title" th:text="${grant.title}">Grant Title</h5>
-                <p class="card-text"><strong>Project Leader:</strong> <span th:text="${grant.projectLeader.name}"></span></p>
+                <p class="card-text"><strong>Project Leader:</strong> <span th:text="${grant.projectLeader != null ? grant.projectLeader.name : 'N/A'}">N/A</span></p>
                 <p class="card-text"><strong>Amount:</strong> <span th:text="${grant.grantAmount}"></span></p>
                 <p class="card-text"><strong>Provider:</strong> <span th:text="${grant.grantProvider}"></span></p>
                 <p class="card-text"><strong>Start Date:</strong> <span th:text="${grant.startDate}"></span></p>

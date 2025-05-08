@@ -33,10 +33,11 @@
             <div class="col-md-6">
                 <label class="form-label">Project Leader</label>
                 <select class="form-select" th:field="*{projectLeader}" required>
+                    <option value="" disabled th:if="${grant.projectLeader == null}">N/A</option>
                     <option th:each="a : ${academicians}"
                             th:value="${a.id}"
                             th:text="${a.name}"
-                            th:selected="${a.id == grant.projectLeader.id}">
+                            th:selected="${a.id == (grant.projectLeader != null ? grant.projectLeader.id : null)}">
                     </option>
                 </select>
             </div>
