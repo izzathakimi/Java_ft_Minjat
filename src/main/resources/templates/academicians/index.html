@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Academicians</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+<body class="p-4">
+    <h1>Academicians</h1>
+    <a href="/academicians/create" class="btn btn-primary mb-3">Add New</a>
+    <table class="table table-bordered">
+        <thead><tr><th>Name</th><th>Faculty</th><th>Email</th><th>Actions</th></tr></thead>
+        <tbody>
+            <tr th:each="a : ${academicians}">
+                <td th:text="${a.name}"></td>
+                <td th:text="${a.faculty}"></td>
+                <td th:text="${a.email}"></td>
+                <td>
+                    <a th:href="@{/academicians/edit/{id}(id=${a.id})}" class="btn btn-sm btn-warning">Edit</a>
+                    <a th:href="@{/academicians/delete/{id}(id=${a.id})}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
