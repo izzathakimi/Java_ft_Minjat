@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -36,9 +37,12 @@ public class MilestoneController {
 
     @PostMapping
     public String saveMilestone(@ModelAttribute Milestone milestone) {
+        milestone.setDateUpdated(LocalDateTime.now());
         milestoneRepo.save(milestone);
-        return "redirect:/milestones";
+        return "redirect:/grants/view/" + milestone.getResearchGrant().getId();
     }
+
+    
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
@@ -51,6 +55,7 @@ public class MilestoneController {
     @PostMapping("/update/{id}")
     public String updateMilestone(@PathVariable Long id, @ModelAttribute Milestone milestone) {
         milestone.setId(id);
+        milestone.setDateUpdated(LocalDateTime.now());
         milestoneRepo.save(milestone);
         return "redirect:/milestones";
     }
@@ -59,5 +64,12 @@ public class MilestoneController {
     public String deleteMilestone(@PathVariable Long id) {
         milestoneRepo.deleteById(id);
         return "redirect:/milestones";
+    }
+
+    @GetMapping("/view/{id}")
+    public String viewMilestone(@PathVariable Long id, Model model) {
+        Milestone milestone = milestoneRepo.findById(id).orElseThrow();
+        model.addAttribute("milestone", milestone);
+        return "milestones/view";
     }
 }

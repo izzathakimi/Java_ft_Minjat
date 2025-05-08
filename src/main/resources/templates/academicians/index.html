@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 </head>
 <body>
-    <div th:replace="fragments/navbar :: main-navbar"></div>
+    <th:block th:replace="~{fragments/navbar :: main-navbar}"></th:block>
 
     <div class="container mt-4">
         <h1>Academicians</h1>
@@ -31,7 +31,7 @@
                     <td>
                         <div class="d-flex flex-wrap gap-2">
 
-                            <a th:href="@{/grants/view/{id}(id=${grant.id})}" class="btn btn-sm btn-info">View</a>
+                            <a th:href="@{/academiciansview/{id}(id=${a.id})}" class="btn btn-sm btn-info">View</a>
                             <a th:href="@{/academicians/edit/{id}(id=${a.id})}" class="btn btn-sm btn-warning">Edit</a>
                             <a th:href="@{/academicians/delete/{id}(id=${a.id})}" class="btn btn-sm btn-danger">Delete</a>
                         </div>

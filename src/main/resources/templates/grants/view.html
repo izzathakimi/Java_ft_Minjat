@@ -20,6 +20,44 @@
                 <a href="/grants" class="btn btn-secondary mt-3">Back to List</a>
             </div>
         </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Project Milestones</h4>
+                <a th:href="@{'/milestones/create?grantId=' + ${grant.id}}" class="btn btn-primary mb-3">Add Milestone</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Milestone Name</th>
+                                <th>Target Completion Date</th>
+                                <th>Deliverable</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                                <th>Date Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="milestone : ${grant.milestones}">
+                                <td th:text="${milestone.name}"></td>
+                                <td th:text="${milestone.targetCompletionDate}"></td>
+                                <td th:text="${milestone.deliverable}"></td>
+                                <td th:text="${milestone.status}"></td>
+                                <td th:text="${milestone.remark}"></td>
+                                <td th:text="${milestone.dateUpdated}"></td>
+                                <td>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <a th:href="@{'/milestones/view/' + ${milestone.id}}" class="btn btn-sm btn-info">View</a>
+                                        <a th:href="@{'/milestones/edit/' + ${milestone.id}}" class="btn btn-sm btn-warning">Edit</a>
+                                        <a th:href="@{'/milestones/delete/' + ${milestone.id}}" class="btn btn-sm btn-danger">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

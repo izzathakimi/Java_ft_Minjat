@@ -2,6 +2,7 @@ package com.example.grant_system.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Milestone {
@@ -24,6 +25,8 @@ public class Milestone {
     @JoinColumn(name = "research_grant_id")
     private ResearchGrant researchGrant;
 
+    private LocalDateTime dateUpdated;
+
     // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -45,4 +48,12 @@ public class Milestone {
 
     public ResearchGrant getResearchGrant() { return researchGrant; }
     public void setResearchGrant(ResearchGrant researchGrant) { this.researchGrant = researchGrant; }
+
+    public LocalDateTime getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDateTime dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
 }

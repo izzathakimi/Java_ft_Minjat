@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Milestone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: main-navbar"></div>
+    <div class="container mt-4">
+        <h1>Add Milestone</h1>
+        <form th:action="@{/milestones}" th:object="${milestone}" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Milestone Name</label>
+                <input type="text" class="form-control" th:field="*{name}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Target Completion Date</label>
+                <input type="date" class="form-control" th:field="*{targetCompletionDate}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Deliverable</label>
+                <input type="text" class="form-control" th:field="*{deliverable}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Status</label>
+                <input type="text" class="form-control" th:field="*{status}" required>
+            </div>
+            <div class="col-md-12">
+                <label class="form-label">Remarks</label>
+                <input type="text" class="form-control" th:field="*{remark}">
+            </div>
+            <div class="col-md-12">
+                <label class="form-label">Research Grant</label>
+                <select class="form-select" th:field="*{researchGrant}" required>
+                    <option th:each="grant : ${grants}" th:value="${grant.id}" th:text="${grant.title}"></option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="/milestones" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
