@@ -29,6 +29,14 @@
         <label class="form-label">Duration (Months)</label>
         <input type="number" class="form-control" th:field="*{durationMonth}" required>
     </div>
+    <div class="col-md-6">
+        <label class="form-label">Project Leader</label>
+        <select class="form-select" th:field="*{projectLeader}" required>
+            <option th:each="a : ${academicians}"
+                    th:value="${a.id}"
+                    th:text="${a.name}">Select...</option>
+        </select>
+    </div>    
     <div class="col-12">
         <button type="submit" class="btn btn-success">Save</button>
         <a href="/grants" class="btn btn-secondary">Cancel</a>

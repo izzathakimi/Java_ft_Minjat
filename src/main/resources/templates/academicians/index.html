@@ -15,7 +15,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Staff ID</th>
                     <th>Name</th>
                     <th>Position</th>
                     <th>Faculty</th>
@@ -25,7 +24,6 @@
             </thead>
             <tbody>
                 <tr th:each="a : ${academicians}">
-                    <td th:text="${a.id}"></td>
                     <td th:text="${a.name}"></td>
                     <td th:text="${a.position}"></td>
                     <td th:text="${a.faculty}"></td>
