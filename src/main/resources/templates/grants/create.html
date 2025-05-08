@@ -7,50 +7,52 @@
 </head>
 <body class="container mt-4">
     <h1 class="mb-4">Add New Grant</h1>
-    
-<form th:action="@{'/grants'}" th:object="${grant}" method="post" class="row g-3">
-    <div class="col-md-6">
-        <label class="form-label">Title</label>
-        <input type="text" class="form-control" th:field="*{title}" required>
+    <div class="card">
+        <div class="card-body">
+        <form th:action="@{'/grants'}" th:object="${grant}" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" th:field="*{title}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Amount</label>
+                <input type="number" step="0.01" class="form-control" th:field="*{grantAmount}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Provider</label>
+                <input type="text" class="form-control" th:field="*{grantProvider}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Start Date</label>
+                <input type="date" class="form-control" th:field="*{startDate}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Duration (Months)</label>
+                <input type="number" class="form-control" th:field="*{durationMonth}" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Project Leader</label>
+                <select class="form-select" th:field="*{projectLeader}" required>
+                    <option th:each="a : ${academicians}"
+                            th:value="${a.id}"
+                            th:text="${a.name}">Select...</option>
+                </select>
+            </div> 
+            <div class="col-md-6">
+                <label>Project Members:</label>
+                <select th:field="*{projectMembers}" multiple="multiple" class="form-control">
+                    <option th:each="a : ${academicians}" 
+                            th:value="${a.id}" 
+                            th:text="${a.name}"></option>
+                </select>
+            </div> 
+            
+            <div class="col-12">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="/grants" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
-    <div class="col-md-6">
-        <label class="form-label">Amount</label>
-        <input type="number" step="0.01" class="form-control" th:field="*{grantAmount}" required>
     </div>
-    <div class="col-md-6">
-        <label class="form-label">Provider</label>
-        <input type="text" class="form-control" th:field="*{grantProvider}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Start Date</label>
-        <input type="date" class="form-control" th:field="*{startDate}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Duration (Months)</label>
-        <input type="number" class="form-control" th:field="*{durationMonth}" required>
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Project Leader</label>
-        <select class="form-select" th:field="*{projectLeader}" required>
-            <option th:each="a : ${academicians}"
-                    th:value="${a.id}"
-                    th:text="${a.name}">Select...</option>
-        </select>
-    </div> 
-    <div class="col-md-6">
-        <label>Project Members:</label>
-        <select th:field="*{projectMembers}" multiple="multiple" class="form-control">
-            <option th:each="a : ${academicians}" 
-                    th:value="${a.id}" 
-                    th:text="${a.name}"></option>
-        </select>
-    </div> 
-       
-    <div class="col-12">
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="/grants" class="btn btn-secondary">Cancel</a>
-    </div>
-</form>
-
 </body>
 </html>
