@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.UUID;
 import com.example.grant_system.repositories.UserRepository; // Add this import
+import com.example.grant_system.entities.User;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.SimpleMailMessage; // Add this import
 
 @Controller
 @RequestMapping("/academicians")
@@ -20,6 +23,20 @@ public class AcademicianController {
 
     @Autowired
     private AcademicianRepository academicianRepo;
+
+    @Autowired
+    private JavaMailSender mailSender;  
+
+    private void sendWelcomeEmail(String to, String rawPassword) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Your Academician Account");
+        message.setText("Hello,\n\nYour account has been created.\nEmail: " + to +
+                        "\nPassword: " + rawPassword +
+                        "\n\nPlease change your password after login.\n\n- Grant System");
+        mailSender.send(message);
+    }
+
 
     @GetMapping
     public String index(Model model) {

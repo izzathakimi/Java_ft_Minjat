@@ -16,7 +16,7 @@ public class User {
 
     private String password;
 
-    private int userLevel;
+    private String userLevel;
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -31,6 +31,6 @@ public class User {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public int getUserLevel() { return userLevel; }
-    public void setUserLevel(int userLevel) { this.userLevel = userLevel; }
+    public String getUserLevel() { return userLevel; }
+    public void setUserLevel(String userLevel) { this.userLevel = userLevel; }
 }
