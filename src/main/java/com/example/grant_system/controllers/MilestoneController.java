@@ -39,10 +39,8 @@ public class MilestoneController {
     public String saveMilestone(@ModelAttribute Milestone milestone) {
         milestone.setDateUpdated(LocalDateTime.now());
         milestoneRepo.save(milestone);
-        return "redirect:/grants/view/" + milestone.getResearchGrant().getId();
+        return "redirect:/milestones";
     }
-
-    
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {

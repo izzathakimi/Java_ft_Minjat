@@ -34,7 +34,6 @@
                     <td th:text="${grant.durationMonth}">12</td>
                     <td>
                         <div class="d-flex flex-wrap gap-2">
-                            <!-- <a th:href="@{/academicians/view/{id}(id=${a.id})}" class="btn btn-sm btn-info">View</a> -->
                             <a th:href="@{/grants/view/{id}(id=${grant.id})}" class="btn btn-sm btn-info">View</a>
                             <a th:href="@{'/grants/edit/' + ${grant.id}}" class="btn btn-sm btn-warning">Edit</a>
                             <a th:href="@{'/grants/delete/' + ${grant.id}}" class="btn btn-sm btn-danger">Delete</a>
