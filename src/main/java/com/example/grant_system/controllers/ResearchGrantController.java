@@ -54,4 +54,11 @@ public class ResearchGrantController {
         grantRepo.deleteById(id);
         return "redirect:/grants";
     }
+
+    @GetMapping("/view/{id}")
+    public String viewGrant(@PathVariable Long id, Model model) {
+        ResearchGrant grant = grantRepo.findById(id).orElseThrow();
+        model.addAttribute("grant", grant);
+        return "grants/view";
+    }
 }

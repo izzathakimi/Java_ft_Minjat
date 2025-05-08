@@ -29,9 +29,12 @@
                     <td th:text="${a.faculty}"></td>
                     <td th:text="${a.email}"></td>
                     <td>
-                        <a th:href="@{/academicians/view/{id}(id=${a.id})}" class="btn btn-sm btn-info">View</a>
-                        <a th:href="@{/academicians/edit/{id}(id=${a.id})}" class="btn btn-sm btn-warning">Edit</a>
-                        <a th:href="@{/academicians/delete/{id}(id=${a.id})}" class="btn btn-sm btn-danger">Delete</a>
+                        <div class="d-flex flex-wrap gap-2">
+
+                            <a th:href="@{/grants/view/{id}(id=${grant.id})}" class="btn btn-sm btn-info">View</a>
+                            <a th:href="@{/academicians/edit/{id}(id=${a.id})}" class="btn btn-sm btn-warning">Edit</a>
+                            <a th:href="@{/academicians/delete/{id}(id=${a.id})}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>

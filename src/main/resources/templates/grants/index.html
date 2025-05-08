@@ -26,19 +26,24 @@
             </thead>
             <tbody>
                 <tr th:each="grant : ${grants}">
-                    <td th:text="${grant.id}">1</td>
+                    <td th:text="${grant.id}"></td>
                     <td th:text="${grant.title}">Title</td>
                     <td th:text="${grant.grantAmount}">0.00</td>
                     <td th:text="${grant.grantProvider}">Provider</td>
                     <td th:text="${grant.startDate}">2025-01-01</td>
                     <td th:text="${grant.durationMonth}">12</td>
                     <td>
-                        <a th:href="@{'/grants/edit/' + ${grant.id}}" class="btn btn-sm btn-warning">Edit</a>
-                        <a th:href="@{'/grants/delete/' + ${grant.id}}" class="btn btn-sm btn-danger">Delete</a>
+                        <div class="d-flex flex-wrap gap-2">
+                            <!-- <a th:href="@{/academicians/view/{id}(id=${a.id})}" class="btn btn-sm btn-info">View</a> -->
+                            <a th:href="@{/grants/view/{id}(id=${grant.id})}" class="btn btn-sm btn-info">View</a>
+                            <a th:href="@{'/grants/edit/' + ${grant.id}}" class="btn btn-sm btn-warning">Edit</a>
+                            <a th:href="@{'/grants/delete/' + ${grant.id}}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
