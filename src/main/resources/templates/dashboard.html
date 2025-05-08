@@ -11,20 +11,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="/dashboard">Grant System</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-bold" href="/academicians">Manage Academicians</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-bold" href="/grants">Manage Research Grants</a>
-                    </li>
-                    <!-- Add more navigation items as needed -->
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -33,38 +19,37 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title">Welcome to the Grant System Dashboard</h1>
-                        <p class="card-text">This is your dashboard. You can manage various aspects of the grant system from here.</p>
+                        <h1 class="card-title text-center fw-bold">Welcome to the Grant System Dashboard</h1>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Quick Stats</h5>
-                        <p class="card-text">View important statistics and metrics.</p>
-                        <a href="#" class="btn btn-primary">View Stats</a>
+            <div class="col-md-4 d-flex">
+                <div class="card flex-fill shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">Academicians</h5>
+                        <p class="card-text text-center">Create, View and Edit Academicians.</p>
+                        <a href="/academicians" class="btn btn-primary mt-auto">Manage</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Recent Activities</h5>
-                        <p class="card-text">Check the latest activities in the system.</p>
-                        <a href="#" class="btn btn-primary">View Activities</a>
+            <div class="col-md-4 d-flex">
+                <div class="card flex-fill shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">Research Grants</h5>
+                        <p class="card-text text-center">Add, View Details, and Edit Research Grants</p>
+                        <a href="/grants" class="btn btn-primary mt-auto">Manage</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Notifications</h5>
-                        <p class="card-text">View your latest notifications.</p>
-                        <a href="#" class="btn btn-primary">View Notifications</a>
+            <div class="col-md-4 d-flex">
+                <div class="card flex-fill shadow">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center">Research Grant Milestones</h5>
+                        <p class="card-text text-center">View and Update your research grant details.</p>
+                        <a href="/milestones" class="btn btn-primary mt-auto">Manage</a>
                     </div>
                 </div>
             </div>
