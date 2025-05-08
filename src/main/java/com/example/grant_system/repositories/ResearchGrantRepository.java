@@ -1,6 +1,6 @@
 package com.example.grant_system.repositories;
 
-import com.example.grant_system.model.ResearchGrant;
+import com.example.grant_system.entities.ResearchGrant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
